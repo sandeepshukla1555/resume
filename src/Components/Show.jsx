@@ -11,8 +11,8 @@ const Show = () => {
     let toArray=toStrings.split(' ')
    console.log(toArray)
   return (
-    <div className='flex justify-center max-w-[46rem] mx-auto mb-3 bg-stone-100'>
-        <div className='w-[30% flex flex-col gap-2 box-border px-2 pt-5 pb-28'>
+    <div className='flex justify-center w-full md:max-w-[46rem] mx-auto mb-3 bg-stone-100 '>
+        <div className='w-[30%] flex flex-col gap-2 box-border px-2 pt-5 pb-28'>
          <div className='flex flex-col justify-center items-center mb-3'>
            <div className='w-14 h-14 rounded-full p-3 bg-[#39D0FF] text-stone-50 flex justify-center items-center'><span className='uppercase'>{resumes.fName[0]+"."+resumes.lName[0]+'.'}</span></div>
            <span>{resumes.fName+" "+resumes.lName}</span>
@@ -23,7 +23,7 @@ const Show = () => {
              <span><span className='font-semibold'>Gender:</span> {resumes.gender}</span>
              <span><span className='font-semibold'>DOB:</span> {resumes.dob}</span>
            </div>
-           <span className='pb-1 pt-3 border-b text-xs'><span className='font-semibold'>Email:</span>{resumes.email}</span>
+           <span className='pb-1 pt-3 border-b text-xs break-words'><span className='font-semibold'>Email:</span>{resumes.email}</span>
            <span className='pb-1 pt-3  border-b text-xs'><span className='font-semibold'>Mobile:</span>{resumes.mobile}</span>
            <span className='pb-1 pt-3  border-b text-xs'><span className='font-semibold'>Address:</span>{resumes.address}</span>
            <span className='pb-1 pt-3  border-b text-xs'><span className='font-semibold'>Father's:</span>{resumes.father}</span>
@@ -33,22 +33,22 @@ const Show = () => {
            <span className='pb-1 pt-3  border-b text-xs'><span className='font-semibold'>Zip-Code:</span> {resumes.zipcode}</span>
          </div>
         </div>
-        <div className='w-[70%] border-l flex flex-col gap-8 pt-20 pb-8 px-2'>
+        <div className='w-[70%] border-l flex flex-col gap-2 md:gap-8 pt-20 pb-8 px-2'>
          <div className='flex flex-col'>
            <h3 className='text-lg text-stone-800 font-bold'>Education</h3>
-           <div className='flex justify-start gap-8 pl-5'>
+           <div className='flex justify-start gap-2 md:gap-8 pl-5'>
              <span className='text-xs w-[30%]'><span className='font-semibold'>10th:</span></span>
              <span className='text-xs'>{resumes.tenPer}</span>
              <span className='text-xs'>{resumes.tenBord}</span>
              <span className='text-xs'>{resumes.tenYear}</span>
            </div>
-           <div className='flex justify-start gap-8 pl-5'>
+           <div className='flex justify-start gap-2 md:gap-8 pl-5'>
              <span className='text-xs w-[30%]'><span className='font-semibold'>12th:</span></span>
              <span className='text-xs'>{resumes.twelPer}</span>
              <span className='text-xs'>{resumes.twelBord}</span>
              <span className='text-xs'>{resumes.twelYear}</span>
            </div>
-           <div className='flex justify-start gap-8 pl-5'>
+           <div className='flex justify-start gap-2 md:gap-8 pl-5'>
              <span className='text-xs w-[30%]'><span className='font-semibold'>Greduation:</span></span>
              <span className='text-xs'>{resumes.grePer}</span>
              <span className='text-xs'>{resumes.greBord}</span>
@@ -69,7 +69,7 @@ const Show = () => {
 
          <div className='flex flex-col'>
            <h3 className='text-lg text-stone-800 font-bold'>Exprience</h3>
-           <div className='flex justify-start gap-8 pl-5'>
+           <div className='flex justify-start gap-3 md:gap-8 pl-5'>
              <span className='text-xs w-[30%]'><span className='font-semibold'>{resumes.cmp1}:</span></span>
              <span className='text-xs'>{resumes.cmpAddr1}</span>
              <span className='text-xs'>{resumes.startDate1}</span>
