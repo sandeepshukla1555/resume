@@ -3,3 +3,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.scrollHeight::-webkit-scrollbar{
+    display: none;
+}

@@ -5,6 +5,7 @@ import Footer from './Components/Footer';
 import Header from './Components/Header';
 import { Home } from './Components/Home';
 import Login from './Components/Login';
+import Show from './Components/Show';
 import SignIn from './Components/Signin';
 
 function App() { 
@@ -16,6 +17,7 @@ function App() {
          <Route path='/login' element={<Login/>}/>
          <Route path='/signin' element={<SignIn/>}/>
          <Route path='/create' element={<Create/>}/>
+         <Route path='/show' element={<Show/>}/>
        </Routes>
        <Footer/>
     </BrowserRouter>
