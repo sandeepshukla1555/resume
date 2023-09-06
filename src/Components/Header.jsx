@@ -8,8 +8,7 @@ import { local } from '../Local';
 const Header = () => {
     let screen=window.screen.width;
     const locals=local.getItem('resume')
-    
-    
+       
   return (
     <div className='sticky -top-18'>
        <div className='relative'>
@@ -22,9 +21,9 @@ const Header = () => {
               <li><Link to='/' className='text-sm md:text-lg text-stone-50'>Home</Link></li>
               <li><Link to='/update' className='text-sm md:text-lg text-stone-50 border-l md:border-l-0 pl-0.5'>Update</Link></li>
               <li><Link to='/download' className='text-sm md:text-lg text-stone-50 border-l md:border-l-0 pl-0.5'>Download</Link></li>
-              <li><Link to='/signin' className='text-sm md:text-lg text-stone-50 border-l md:border-l-0 pl-0.5'>{locals===null?'Signin':<span onClick={()=>{
-                locals.removeItem('resume')
-              }}>Logout</span>}</Link></li>
+              {locals===null?<li><Link to='/signin' className='text-sm md:text-lg text-stone-50 border-l md:border-l-0 pl-0.5'>Signin</Link></li>:<li><span onClick={()=>{
+                local.removeItem('resume')
+              }} className='text-sm md:text-lg text-stone-50 border-l md:border-l-0 pl-0.5'>Logout</span></li>}
             </ul>
             <div className='flex flex-col gap-1 items-center w-[10%]'>
               <div className='w-9 h-9 rounded-full bg-stone-800'></div>
