@@ -9,6 +9,16 @@ const Show = () => {
     let skillss=resumes.skills;
     let toStrings=String(skillss)
     let toArray=toStrings.split(' ')
+
+    let projects=resumes.projects;
+    let toStrProject=String(projects)
+    let toArrayProject=toStrProject.split(' ')
+
+    let languages=resumes.language;
+    let toStrLanguage=String(languages)
+    let toArrayLanguage=toStrLanguage.split(' ')
+
+
    function toPdf(){
     const res=document.querySelector('.resume')
     window.print()
@@ -16,7 +26,7 @@ const Show = () => {
   return (
    <div className='flex flex-col justify-center gap-3 resume'>
      <div className='flex justify-center w-full md:max-w-[46rem] mx-auto mb-3 bg-stone-100 '>
-        <div className='w-[30%] flex flex-col gap-2 box-border px-2 pt-5 pb-28'>
+        <div className='w-[40%] flex flex-col gap-2 box-border px-2 pt-5 pb-28'>
          <div className='flex flex-col justify-center items-center mb-3'>
            <div className='w-14 h-14 rounded-full p-3 bg-[#39D0FF] text-stone-50 flex justify-center items-center'><span className='uppercase'>{resumes.fName[0]+"."+resumes.lName[0]+'.'}</span></div>
            <span>{resumes.fName+" "+resumes.lName}</span>
@@ -37,7 +47,7 @@ const Show = () => {
            <span className='pb-1 pt-3 border-b text-xs break-words'><span className='font-medium md:font-semibold'>Zip-Code:</span> {resumes.zipcode}</span>
          </div>
         </div>
-        <div className='w-[70%] border-l flex flex-col gap-2 md:gap-8 pt-20 pb-8 px-2'>
+        <div className='w-[60%] border-l flex flex-col gap-2 md:gap-8 pt-20 pb-8 px-2'>
          <div className='flex flex-col'>
            <h3 className='text-lg text-stone-800 font-medium md:font-bold'>Education</h3>
            <div className='flex justify-start gap-2 md:gap-8 pl1 md:pl-5'>
@@ -62,25 +72,54 @@ const Show = () => {
 
          <div className='flex flex-col'>
            <h3 className='text-lg text-stone-800 font-medium md:font-bold'>Skills</h3>
-           <div className='flex justify-start gap-2 pl1 md:pl-5 flex-wrap'>
+           <ul className='flex flex-col gap-0.5 pl1 md:pl-5 flex-wrap'>
              {
                 toArray.map(ele=>{
-                    return <span key={ele} className='text-xs px-2 p-1 rounded-lg bg-teal-600 text-stone-50'>{ele}</span>
+                    return <li key={ele} className='text-xs text-stone-800 list-disc list-inside'>{ele}</li>
                 })
              }
-           </div>
+           </ul>
          </div>
 
          <div className='flex flex-col'>
            <h3 className='text-lg text-stone-800 font-medium md:font-bold'>Exprience</h3>
-           <div className='flex justify-start gap-3 md:gap-8 pl1 md:pl-5'>
-             <span className='text-xs w-[30%]'><span className='font-medium md:font-semibold'>{resumes.cmp1}:</span></span>
-             <span className='text-xs'>{resumes.cmpAddr1}</span>
-             <span className='text-xs'>{resumes.startDate1}</span>
-             <span className='text-xs'>{resumes.endDate1}</span>
+           <div className='flex flex-col border'>
+             <div className='w-full flex flex-start gap-1 md:gap-4 border md:pl-5'>
+              <span className='text-xs w-1/2'><span className='font-medium md:font-semibold'>{resumes.cmp1}:</span></span>
+              <span className='text-xs w-1/2 md:pl-5 border-l'>{resumes.cmpAddr1}</span>
+             </div>
+             <div className='w-full flex flex-start gap-1 md:gap-4 border md:pl-5'>
+              <span className='text-xs w-1/2'>{resumes.startDate1}</span>
+              <span className='text-xs w-1/2 md:pl-5 border-l'>{resumes.endDate1}</span>
+             </div>
            </div>
          </div>
 
+         
+         <div className='flex flex-col'>
+           <h3 className='text-lg text-stone-800 font-medium md:font-bold'>Goal/Aim</h3>
+             <span className='text-xs'>{resumes.goal}</span>
+         </div>
+         <div className='flex flex-col'>
+           <h3 className='text-lg text-stone-800 font-medium md:font-bold'>Projects</h3>
+           <ul className='flex flex-col gap-0.5 pl1 md:pl-5 flex-wrap'>
+             {
+                toArrayProject.map(ele=>{
+                    return <li key={ele} className='text-xs text-stone-800 list-disc list-inside'><a href={`${ele}`} className="cursor-pointer underline">{ele}</a></li>
+                })
+             }
+           </ul>
+         </div>
+         <div className='flex flex-col'>
+           <h3 className='text-lg text-stone-800 font-medium md:font-bold'>Lanuage</h3>
+           <ul className='flex flex-col gap-0.5 pl1 md:pl-5 flex-wrap'>
+             {
+                toArrayLanguage.map(ele=>{
+                    return <li key={ele} className='text-xs text-stone-800 list-disc list-inside'>{ele}</li>
+                })
+             }
+           </ul>
+         </div>
          <div className='flex flex-col'>
            <h3 className='text-lg text-stone-800 font-medium md:font-bold'>Hobbies</h3>
              <span className='text-xs'>{resumes.hobbies}</span>

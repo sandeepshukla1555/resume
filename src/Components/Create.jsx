@@ -36,7 +36,7 @@ const Create = () => {
           <h3 className='text-stone-800 flex mb-5'><DocumentTextIcon className='w-6 h-6'/> Create Your Own Resume...</h3>
         </div>
         <form className='flex flex-col box-border' onSubmit={(event)=>create(event)}>
-        <div className={`rounded-lg py-2 px-4 font-bold flex justify-center items-center ${status===true?'text-stone-50 bg-green-200 shadow-md block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] z-50':status===false?'text-red-50 bg-red-100 shadow-md block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] z-50':''}`}>{status===true?<div><span className='relative flex flex-col gap-8 text-stone-800 font-bold'><img className='w-40 h-40' src={done} alt={done}/><span className='text-center'>Success!</span></span><Link to="/show"><XMarkIcon onClick={()=>setStatus(undefined)} className='absolute top-2.5 right-2 text-stone-800 w-9 h-9 cursor-pointer rounded-full bg-stone-300 p-1'/></Link></div>:status===false?<div><span className='relative flex flex-col gap-8 text-stone-800 font-bold justify-center'><img className='w-20 h-20' src={cancel} alt={cancel}/><span className='text-center'>Failed!</span></span><XMarkIcon onClick={()=>setStatus(undefined)} className='absolute top-2.5 right-2 text-stone-800 w-9 h-9 cursor-pointer rounded-full bg-stone-300 p-1'/></div>:''}</div>
+        {status===undefined?'':<div className='fixed bg-stone-900 bg-opacity-90 top-0 left-0 w-full h-screen z-40 flex justify-center items-center'><div className={`rounded-lg py-2 px-4 font-bold flex justify-center items-center ${status===true?'text-stone-50 bg-green-200 shadow-md block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] z-50':status===false?'text-red-50 bg-red-100 shadow-md block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[22rem] h-[22rem] z-50':''}`}>{status===true?<div><span className='relative flex flex-col gap-8 text-stone-800 font-bold'><img className='w-40 h-40' src={done} alt={done}/><span className='text-center'>Success!</span></span><Link to="/show"><XMarkIcon onClick={()=>setStatus(undefined)} className='absolute top-2.5 right-2 text-stone-800 w-9 h-9 cursor-pointer rounded-full bg-stone-300 p-1'/></Link></div>:status===false?<div><span className='relative flex flex-col gap-8 text-stone-800 font-bold justify-center'><img className='w-20 h-20' src={cancel} alt={cancel}/><span className='text-center'>Failed!</span></span><XMarkIcon onClick={()=>setStatus(undefined)} className='absolute top-2.5 right-2 text-stone-800 w-9 h-9 cursor-pointer rounded-full bg-stone-300 p-1'/></div>:''}</div></div>}
             <div className='flex flex-col gap-5'>
                <h3 className='ttext-2xl text-stone-800 font-bold'>Personal Details</h3>
                <div className='flex flex-col md:flex-row md:justify-between gap-5 w-full box-border'>
@@ -231,11 +231,38 @@ const Create = () => {
                </div>
             </div>
 
-            <div className='flex flex-col gap-5'>
+            <div className='flex flex-col gap-5 mt-8'>
                <h3 className='ttext-2xl text-stone-800 font-bold'>Hobbies</h3>
                <div className='w-full box-border'>
                  <div className='relative flex items-center'>
-                    <textarea onChange={(e)=>getCreate(e)} type="text" cols="1" placeholder='Hobbies:' name="hobbies" className='w-full border-b border-b-stone-800 overflow-hidden placeholder:text-stone-800 placeholder:text-xs relative pr-2 pl-5 flex h-6'></textarea>
+                    <textarea onChange={(e)=>getCreate(e)} type="text" rows="2" cols="5" placeholder='Hobbies:' name="hobbies" className='w-full border-b border-b-stone-800 overflow-hidden placeholder:text-stone-800 placeholder:text-xs relative pr-2 pl-5 flex'></textarea>
+                    <UserIcon className='absolute w-5 h-5 text-[#39D0FF] left-0 -top-1'/>
+                 </div>
+               </div>
+            </div>
+            <div className='flex flex-col gap-5 mt-8'>
+               <h3 className='ttext-2xl text-stone-800 font-bold'>Goal/Aim</h3>
+               <div className='w-full box-border'>
+                 <div className='relative flex items-center'>
+                    <textarea onChange={(e)=>getCreate(e)} type="text" rows="2" cols="5" placeholder='Goal/Aim:' name="goal" className='w-full border-b border-b-stone-800 overflow-hidden placeholder:text-stone-800 placeholder:text-xs relative pr-2 pl-5 flex'></textarea>
+                    <UserIcon className='absolute w-5 h-5 text-[#39D0FF] left-0 -top-1'/>
+                 </div>
+               </div>
+            </div>
+            <div className='flex flex-col gap-5 mt-8'>
+               <h3 className='ttext-2xl text-stone-800 font-bold'>Language</h3>
+               <div className='w-full box-border'>
+                 <div className='relative flex items-center'>
+                    <textarea onChange={(e)=>getCreate(e)} type="text" rows="2" cols="5" placeholder='Language:' name="language" className='w-full border-b border-b-stone-800 overflow-hidden placeholder:text-stone-800 placeholder:text-xs relative pr-2 pl-5 flex'></textarea>
+                    <UserIcon className='absolute w-5 h-5 text-[#39D0FF] left-0 -top-1'/>
+                 </div>
+               </div>
+            </div>
+            <div className='flex flex-col gap-5'>
+               <h3 className='ttext-2xl text-stone-800 font-bold'>Projects</h3>
+               <div className='w-full box-border'>
+                 <div className='relative flex items-center'>
+                    <textarea onChange={(e)=>getCreate(e)} type="text" rows="2" cols="5" placeholder='Projects:' name="projects" className='w-full border-b border-b-stone-800 overflow-hidden placeholder:text-stone-800 placeholder:text-xs relative pr-2 pl-5 flex'></textarea>
                     <UserIcon className='absolute w-5 h-5 text-[#39D0FF] left-0 -top-1'/>
                  </div>
                </div>
