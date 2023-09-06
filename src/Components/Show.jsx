@@ -9,7 +9,6 @@ const Show = () => {
     let skillss=resumes.skills;
     let toStrings=String(skillss)
     let toArray=toStrings.split(' ')
-   console.log(toArray)
    function toPdf(){
     const res=document.querySelector('.resume')
     window.print()
@@ -24,7 +23,7 @@ const Show = () => {
          </div>
          <h3 className='text-lg text-stone-800 font-medium md:font-bold'>Personal Details</h3>
          <div className='flex flex-col gap-3'>
-           <div className='flex justify-between border-b pb-1 pt-3 text-xs'>
+           <div className='flex flex-col md:flex-row md:justify-between border-b pb-1 pt-3 text-xs'>
              <span><span className='font-semibold'>Gender:</span> {resumes.gender}</span>
              <span><span className='font-semibold'>DOB:</span> {resumes.dob}</span>
            </div>
@@ -66,7 +65,7 @@ const Show = () => {
            <div className='flex justify-start gap-2 pl1 md:pl-5 flex-wrap'>
              {
                 toArray.map(ele=>{
-                    return <span className='text-xs px-2 p-1 rounded-lg bg-teal-600 text-stone-50'>{ele}</span>
+                    return <span key={ele} className='text-xs px-2 p-1 rounded-lg bg-teal-600 text-stone-50'>{ele}</span>
                 })
              }
            </div>

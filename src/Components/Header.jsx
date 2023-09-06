@@ -21,7 +21,7 @@ const Header = () => {
         const resume=toObject;
         setResumes(resume)
       }
-    })
+    },[])
     
        
   return (

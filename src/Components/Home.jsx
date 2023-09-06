@@ -15,7 +15,6 @@ export const Home = () => {
         }
         else
         {
-            console.log('Not Null')
             const toObjs=JSON.parse(locals)
             let items=toObjs.newItem
             if(items===undefined)
@@ -26,7 +25,6 @@ export const Home = () => {
             else
             {
                 setToObj(toObjs)
-                console.log(toObjs.newItem)
             }
         }
     },[])
