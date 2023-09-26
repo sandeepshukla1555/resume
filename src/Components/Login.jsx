@@ -1,4 +1,6 @@
-import { ArrowRightOnRectangleIcon, BackwardIcon, DocumentTextIcon } from '@heroicons/react/24/solid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenNib } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { local } from '../Local'
@@ -8,10 +10,10 @@ const Login = () => {
   return (
     <div className={`flex justify-center flex-col items-center py-[11%] ${loged===null?'h-screen py-0':''}`}>
         <div className='flex justify-start gap-5'>
-        <div><BackwardIcon onClick={()=>{
+        <div><FontAwesomeIcon onClick={()=>{
             window.history.back()
             }} className='w-6 h-6 bg-stone-800 text-stone-50 p-2 rounded-full hover:bg-stone-500 cursor-pointer'/></div>
-          <h3 className='text-stone-800 flex mb-5'><ArrowRightOnRectangleIcon className='w-6 h-6'/> {loged===null?'Please First Sign-In 🤔':'Login Your Own Account 😊'}</h3>
+          <h3 className='text-stone-800 flex mb-5'><FontAwesomeIcon className='w-6 h-6'/> {loged===null?'Please First Sign-In 🤔':'Login Your Own Account 😊'}</h3>
         </div>
         {
             loged===null?<div className='w-[22rem] lg:w-[26rem] shadow-md px-9 flex justify-center items-center gap-5 py-14 rounded-lg'>

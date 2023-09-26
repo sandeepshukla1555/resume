@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import resume from '../img/resume.svg'
 import { local } from '../Local'
 import { useState, useEffect } from 'react'
-import { ArrowRightIcon, ForwardIcon } from '@heroicons/react/24/solid'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenNib } from '@fortawesome/free-solid-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 export const Home = () => {
     const [toObj, setToObj]=useState(undefined)
@@ -43,7 +45,7 @@ export const Home = () => {
               Faverate Templets only in RS-5
            </p>
             <div className='flex justify-center'>
-              <Link to={`${locals===null?'/login':toObj===undefined?'/create':'/show'}`} className='text-base text-stone-50 bg-[#39D0FF] rounded-lg inline px-5 md:px-5 p-2 md:py-3 hover:bg-[#67cdec]'>{locals===null?<span className='flex justify gap-2'>Login<ArrowRightIcon className='w-6 h-6'/></span>:toObj===undefined?<span className='flex justify gap-2'>Create<ArrowRightIcon className='w-6 h-6'/></span>:<span className='flex justify gap-2'>Show<ArrowRightIcon className='w-6 h-6'/></span>}</Link>
+              <Link to={`${locals===null?'/login':toObj===undefined?'/create':'/show'}`} className='text-base text-stone-50 bg-[#39D0FF] rounded-lg inline px-5 md:px-5 p-2 md:py-3 hover:bg-[#67cdec]'>{locals===null?<span className='flex justify gap-2'>Login<FontAwesomeIcon className='w-6 h-6'/></span>:toObj===undefined?<span className='flex justify gap-2'>Create<FontAwesomeIcon className='w-6 h-6'/></span>:<span className='flex justify gap-2'>Show<FontAwesomeIcon className='w-6 h-6'/></span>}</Link>
               {/* <Link to={`${locals===null?'/login':'/create'}`} className='text-base text-stone-50 bg-[#39D0FF] rounded-lg inline px-5 md:px-8 p-2 md:py-3 hover:bg-[#67cdec]'>{locals===null?'Login':'Create'}</Link> */}
             </div>
         </div> 
