@@ -1,6 +1,4 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenNib } from '@fortawesome/free-solid-svg-icons'
-import { faEnvelope, faRightLong } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import { local } from '../Local'
 
