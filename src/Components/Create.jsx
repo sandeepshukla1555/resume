@@ -13,6 +13,7 @@ const Create = () => {
  
   const [formData, setFormData]=useState('')
   const [formProject, setFormProject]=useState([{cmpName:'',cmpAddress:'',cmpStartDate:'',cmpEndDate:''}])
+  const [skill, setSkills]=useState([{skills:''}])
   const [status, setStatus]=useState(undefined)
   let localData=local.getItem('resume')
 
@@ -23,6 +24,25 @@ const Create = () => {
     console.log(e.target.name+" : "+e.target.value)
     setFormData({...formData,[e.target.name]:e.target.value})
   }
+
+  //Skills section
+  function skillAdd(){
+   let expLen=exprience.length;
+   let expAdd=expLen+1;
+   const newArr=[];
+   const concats=newArr.concat(exprience)
+   concats.push(expAdd)
+   setSkills([...skill,{skills:''}])
+  }
+  function skillCreate(e,i)
+  {
+   const {name, value}=e.target;
+   const collectData=[...skill];
+   collectData[i][name]=value;
+   console.log(skill)
+  }
+
+  //Exprience Section
   function handleAdd()
   {
    let expLen=exprience.length;
@@ -41,11 +61,14 @@ const Create = () => {
    console.log(formProject)
   }
 
+
+
   function create(event){
     event.preventDefault()
     const toObject=JSON.parse(localData);
     let insertResume={...toObject,newItem:formData}
     insertResume.newItem.pro=formProject;
+    insertResume.newItem.skill=skill;
     console.log(insertResume)
     let toText=JSON.stringify(insertResume)
     local.setItem('resume',toText)
@@ -223,16 +246,26 @@ const Create = () => {
                  </div>
                </div>
             </div>
-
+           
             <div className='flex flex-col gap-5 mt-8'>
-               <h3 className='ttext-2xl text-stone-800 font-bold'><FontAwesomeIcon icon={faArrowUpRightDots} className='w-5 h-5'/> Skills</h3>
-               <div className='w-full box-border'>
-                 <div className='relative flex items-center'>
-                    <textarea onChange={(e)=>getCreate(e)} type="text" rows="2" cols="1" placeholder='Skills:' name="skills" className='w-full border-b border-b-stone-800 overflow-hidden placeholder:text-stone-800 placeholder:text-xs relative pr-2 pl-5 flex h-6'></textarea>
-                    <FontAwesomeIcon icon={faCommentDots} className='absolute w-4 h-4 text-[#39D0FF] left-0 top-0'/>
-                 </div>
+            <h3 className='text-2xl text-stone-800 font-bold'><FontAwesomeIcon icon={faArrowUpRightDots} className='w-5 h-5'/> Skills</h3>
+           {skill.map((ele,i)=>{
+             return (
+               <div key={i}>
+             <div className='w-full box-border'>
+               <div className='relative flex items-center'>
+                  <input onChange={(e)=>skillCreate(e,i)} type="text" placeholder='Skills:' value={ele.skill} name="skills" className='w-full border-b border-b-stone-800 overflow-hidden placeholder:text-stone-800 placeholder:text-xs relative pr-2 pl-5 flex h-6'/>
+                  <FontAwesomeIcon icon={faCommentDots} className='absolute w-4 h-4 text-[#39D0FF] left-0 top-0'/>
                </div>
-            </div>
+             </div>
+             </div>
+            )
+           })}
+           <div className='flex justify-center gap-5 w-full'>
+                 <FontAwesomeIcon onClick={()=>skillAdd()} icon={faPlus} className='w-6 h-6 rounded-full p-1 text-stone-50 font-bold border bg-green-500 hover:bg-green-800 cursor-pointer'/>
+         </div>
+         </div>
+            
 
             <div className='flex flex-col gap-5 mt-8'>
                <h3 className='ttext-2xl text-stone-800 font-bold'><FontAwesomeIcon icon={faArrowUpRightDots} className='w-5 h-5'/> Experience</h3>

@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPrint } from '@fortawesome/free-solid-svg-icons'
 import React from 'react'
 import { local } from '../Local'
 
@@ -7,7 +8,7 @@ const Show = () => {
     const toObject=JSON.parse(locals)
     const resumes=toObject.newItem;
 
-    let skillss=resumes.skills===undefined?'No-Skills':resumes.skills;
+    let skillss=resumes.skill===undefined?'No-Skills':resumes.skill;
     let toStrings=String(skillss)
     let toArray=toStrings.split(' ')
 
@@ -75,8 +76,8 @@ const Show = () => {
            <h3 className='text-lg text-stone-800 font-normal md:font-medium flex gap-1 items-center'><FontAwesomeIcon className="w-5 h-5"/>Skills</h3>
            <ul className='flex flex-col gap-0.5 pl1 md:pl-5 flex-wrap'>
              {
-                toArray.map(ele=>{
-                    return <li key={ele} className='text-xs text-stone-800 list-disc list-inside'>{ele}</li>
+                skillss.map((ele,i)=>{
+                    return <li key={ele} className='text-xs text-stone-800 list-disc list-inside'>{ele.skills}</li>
                 })
              }
            </ul>
@@ -144,7 +145,7 @@ const Show = () => {
          </div>
         </div>
     </div>
-     <button onClick={()=>toPdf()} className='text-sm text-stone-50 bg-red-500 rounded-lg py-1 w-[8rem] mx-auto cursor-pointer hover:bg-red-800 hover:text-stone-300'>Print</button>
+     <button onClick={()=>toPdf()} className='text-sm text-stone-50 bg-cyan-500 rounded-lg py-1 w-[5rem] mx-auto cursor-pointer hover:bg-cyan-800 hover:text-stone-300'><FontAwesomeIcon icon={faPrint} className="w-5 h-5"/> Print</button>
    </div>
   )
 }

@@ -7,9 +7,33 @@ import { Home } from './Components/Home';
 import Login from './Components/Login';
 import Show from './Components/Show';
 import SignIn from './Components/Signin';
+import React,{ createContext, useState, useEffect } from 'react';
+import { local } from './Local';
 
-function App() { 
+export const Context=createContext()
+
+function App() {  
+  
+  const [status,setContextStatus]=useState(null)
+  const [update, setUpdate]=useState(undefined)
+
+  useEffect(() => {
+    const locals=local.getItem('resume');
+    if(locals!==null)
+    {
+      setContextStatus(locals)
+    }
+  }, [update])
+
+  //For Logout
+  function changeStatus()
+  {
+    local.removeItem('resume')
+    setContextStatus(null)
+  }
+  
   return (
+    <Context.Provider value={{status:status, changeStatus:changeStatus,update:update,setUpdate:setUpdate}}>
     <BrowserRouter>
        <Header/>
        <Routes>
@@ -21,6 +45,7 @@ function App() {
        </Routes>
        <Footer/>
     </BrowserRouter>
+    </Context.Provider>
   );
 }
 
